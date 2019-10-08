@@ -24,7 +24,7 @@ public class Metadata{
         int num_cuadranteY = 0; 
         
         int cuadrante = 0;
-        
+        Hash colors=new Hash();
         for(int x=0; x<=896; x+=128){//x se refiere a la coord x de la imagen, se llega hsta 896 para no salirse de los lim
             num_cuadranteY = 0;
             System.out.println("\n");
@@ -52,9 +52,14 @@ public class Metadata{
                     
                     imagen.setRGB(x1, y1, 16711680);
                     
-                    //acá guardaría los randoms
+                    colors.FunctionHash(R,G,B,x1,y1);
+                    
+                    
+                    
                 }
-                
+                for(Coords coord: colors.getRed()){
+                    System.out.println(coord.getX());
+                }
                 System.out.println(media_RGB[0]+","+media_RGB[1]+","+media_RGB[2]);
                 media_RGB[0] = (int)(media_RGB[0]/(819*prob_x_cuadrante[num_cuadranteX][num_cuadranteY]));
                 media_RGB[1] =(int)(media_RGB[1]/(819*prob_x_cuadrante[num_cuadranteX][num_cuadranteY]));
@@ -100,6 +105,8 @@ public class Metadata{
         
         return b;
     }*/
+
+    
         
 }
 
