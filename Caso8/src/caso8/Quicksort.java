@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Quicksort {
 
     public static void quickSortx(ArrayList<Coords> arr, int start, int end) {
-        
+
         int partition = partitionx(arr, start, end);
 
         if (partition - 1 > start) {
@@ -61,16 +61,16 @@ public class Quicksort {
 
         return start;
     }
-    
-        public static void quickSorty(ArrayList<Coords> arr, int start, int end) {
 
-        int partition = partitionx(arr, start, end);
+    public static void quickSorty(ArrayList<Coords> arr, int start, int end) {
+
+        int partition = partitiony(arr, start, end);
 
         if (partition - 1 > start) {
-            quickSortx(arr, start, partition - 1);
+            quickSorty(arr, start, partition - 1);
         }
         if (partition + 1 < end) {
-            quickSortx(arr, partition + 1, end);
+            quickSorty(arr, partition + 1, end);
         }
     }
 
