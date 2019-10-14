@@ -64,8 +64,10 @@ public class Caso8 {
         
        // acá se recorren las listas de xy de determindo color
         int size=coords_a_ordenar.size();
-        
-        for(int x=0;x<coords_a_ordenar.size();x++) {
+        System.out.println("********************************************");
+        ClassifyTarget clasi = new ClassifyTarget();
+        clasi.classify(coords_a_ordenar);
+       /* for(int x=0;x<coords_a_ordenar.size();x++) {
             for(Coords coord: coords_a_ordenar.get(x).getRed()){
                     System.out.println("++++++++++++++++++++++");
                     System.out.println(coord.getX());
@@ -79,7 +81,7 @@ public class Caso8 {
             coords_a_ordenar.get(x).getNegro();
             coords_a_ordenar.get(x).getRed();
             coords_a_ordenar.get(x).getYellow();*/
-        }
+       // }
         
         NewCreateHTML HTML = new NewCreateHTML();
         HTML.generarHTML();
