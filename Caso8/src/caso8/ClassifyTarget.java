@@ -19,37 +19,9 @@ public class ClassifyTarget {
     public void classify(ArrayList<ColorList> lista) {
 
         ArrayList<ArrayList<Chromosome>> chromo = new ArrayList();
+        ArrayList<ArrayList<ArrayList<Coords>>> tmpe = new ArrayList();
 
-        for (int x = 0; x < 4; x++) {
-            ArrayList<Chromosome> cromo = new ArrayList();
-
-            ArrayList<Coords> black = new ArrayList();
-            ArrayList<Coords> navy = new ArrayList();
-            ArrayList<Coords> blue = new ArrayList();
-            ArrayList<Coords> green = new ArrayList();
-            ArrayList<Coords> teal = new ArrayList();
-            ArrayList<Coords> deepskyblue = new ArrayList();
-            ArrayList<Coords> lime = new ArrayList();
-            ArrayList<Coords> springgreen = new ArrayList();
-            ArrayList<Coords> cyan = new ArrayList();
-            ArrayList<Coords> darkred = new ArrayList();
-            ArrayList<Coords> purple = new ArrayList();
-            ArrayList<Coords> darkviolet = new ArrayList();
-            ArrayList<Coords> olive = new ArrayList();
-            ArrayList<Coords> gray = new ArrayList();
-            ArrayList<Coords> mediumslateblue = new ArrayList();
-            ArrayList<Coords> chartreuse = new ArrayList();
-            ArrayList<Coords> palegreen = new ArrayList();
-            ArrayList<Coords> aqua = new ArrayList();
-            ArrayList<Coords> red = new ArrayList();
-            ArrayList<Coords> deepink = new ArrayList();
-            ArrayList<Coords> magenta = new ArrayList();
-            ArrayList<Coords> orange = new ArrayList();
-            ArrayList<Coords> ligthsalmon = new ArrayList();
-            ArrayList<Coords> violet = new ArrayList();
-            ArrayList<Coords> yellow = new ArrayList();
-            ArrayList<Coords> navajowhite = new ArrayList();
-            ArrayList<Coords> whitegray = new ArrayList();
+        for (int x = 0; x < lista.size(); x++) {
 
             /*Quicksort.quickSortx(lista.get(x).getBlack(), 0, lista.get(x).getBlack().size() - 1);/*
             Quicksort.quickSortx(lista.get(x).getNavy(), 0,lista.get(x).getNavy().size() - 1);
@@ -78,153 +50,459 @@ public class ClassifyTarget {
             Quicksort.quickSortx(lista.get(x).getYellow(), 0,lista.get(x).getYellow().size() - 1);
             Quicksort.quickSortx(lista.get(x).getNavajowhite(), 0,lista.get(x).getNavajowhite().size() - 1);
             Quicksort.quickSortx(lista.get(x).getWhitegray(), 0,lista.get(x).getWhitegray().size() - 1);*/
-            for (Coords cuadrante_color : lista.get(x).getBlack()) {
-
-                System.out.println(cuadrante_color.getX());
-            }
-
-
+            ArrayList<ArrayList<Coords>> tmpnegro = new ArrayList();
+            int blacknegro = 0;
+            //System.out.println("top"+lista.get(x).getBlack().size());
             if (lista.get(x).getBlack().size() > 0) {
-                //
-                //icksort blackx = new Quicksort(lista.get(x).getBlack().get(x));
-               Quicksort.quickSortx(lista.get(x).getBlack(), 0, lista.get(x).getBlack().size() - 1);
-           
-                System.out.println("ooooooooooooooooooooooooooooooooooooooo\n"+x);
-                for (int blacki = 0; blacki < lista.get(x).getBlack().size(); blacki++) {
-                    System.out.println(lista.get(x).getBlack().get(blacki).getX());
-                    if (blacki < lista.get(x).getBlack().size() - 1) {
-                        if (lista.get(x).getBlack().get(blacki).getX() - lista.get(x).getBlack().get(blacki).getX() < 5) {
 
+                Quicksort.quickSortx(lista.get(x).getBlack(), 0, lista.get(x).getBlack().size() - 1);
+                System.out.println(Math.abs(lista.get(x).getBlack().get(blacknegro + 1).getX() - lista.get(x).getBlack().get(blacknegro).getX()) + "p");
+
+                while (blacknegro < lista.get(x).getBlack().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (blacknegro < lista.get(x).getBlack().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getBlack().size();
+                        while (Math.abs(lista.get(x).getBlack().get(blacknegro + 1).getX() - lista.get(x).getBlack().get(blacknegro).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getBlack().get(blacknegro).getR());
+                            cord.setG(lista.get(x).getBlack().get(blacknegro).getG());
+                            cord.setB(lista.get(x).getBlack().get(blacknegro).getB());
+                            cord.setX(lista.get(x).getBlack().get(blacknegro).getX());
+                            cord.setY(lista.get(x).getBlack().get(blacknegro).getY());
+                            tmpx.add(cord);
+                            if (blacknegro + 1 < lista.get(x).getBlack().size() - 2) {
+                                blacknegro++;
+                            } else {
+                                sale = true;
+                            }
                         }
+
+                        tmpnegro.add(tmpx);
+                        blacknegro++;
+
+                    } else {
+                        blacknegro++;
                     }
-                }
-                //System.out.println(lista.get(x).getBlack().size());
-               
-            }
-/*
-            System.out.println("000000000000" + x);
-            for (Coords cuadrante_color : lista.get(x).getBlack()) {
 
-                System.out.println(cuadrante_color.getX());
-            }
-            System.out.println("\n");*/
-
-            /*  
-
-            for (Coords cuadrante_color : lista.get(x).getBlack()) {
-
-                Coords coordblack = new Coords();
-                coordblack.setR(cuadrante_color.getR());
-                coordblack.setG(cuadrante_color.getG());
-                coordblack.setB(cuadrante_color.getB());
-                coordblack.setX(cuadrante_color.getX());
-                coordblack.setY(cuadrante_color.getY());
-                black.add(coordblack);
-                if (!black.isEmpty()) {
-                    Quicksort.quickSortx(black, 0, black.size() - 1);
-                }
-            }
-
- 
-            ArrayList<ArrayList<Coords>> selectblackx = new ArrayList();
-            Iterator blackit = black.iterator();
-            int blacki = 0;
-            while (blackit.hasNext()) {
-                ArrayList<Coords> partial_black = new ArrayList();
-                blacki++;
-                while (blackit.hasNext() && black.get(blacki).getY() - black.get(blacki - 1).getY() < 5) {
-                    partial_black.add(black.get(blacki));
-                    blackit.next();
-                }
-                if (!partial_black.isEmpty()) {
-                    selectblackx.add(partial_black);
                 }
 
-            }
-            
-            
-            
-            
-            for (ArrayList<Coords> selecty : selectblackx) {
-                Quicksort.quickSorty(selecty, 0, selecty.size() - 1);
-            }
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                ArrayList<ArrayList<Coords>> tmpy = new ArrayList();
+                blacknegro = 0;
+                //System.out.println("top"+lista.get(x).getBlack().size());
 
-            ArrayList<ArrayList<Coords>> selectblacky = new ArrayList();
-            int blackj = 0;
-            while (blackit.hasNext()) {
-                ArrayList<Coords> partial_black = new ArrayList();
-                blackj++;
-                while (blackit.hasNext() && black.get(blackj).getY() - black.get(blackj - 1).getY() < 5) {
-                    partial_black.add(black.get(blackj));
-                    blackit.next();
-                }
-                if (!partial_black.isEmpty()) {
-                    selectblacky.add(partial_black);
+                for (ArrayList<Coords> types : tmpnegro) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
                 }
 
+                tmpe.add(tmpnegro);
             }
-
-            for (ArrayList<Coords> select : selectblacky) {
-                Chromosome cromosoma = new Chromosome();
-                cromosoma.setR(select.get(0).getR());
-                cromosoma.setG(select.get(0).getG());
-                cromosoma.setB(select.get(0).getB());
-                cromosoma.setX1(select.get(0).getX());
-                cromosoma.setY1(select.get(0).getY());
-                cromosoma.setX2(select.get(select.size() - 1).getX());
-                cromosoma.setY2(select.get(select.size() - 1).getX());
-                cromo.add(cromosoma);
-            }*/
 //--------------------------------------------------------------------------------------------            
-            for (Coords cuadrante_color : lista.get(x).getNavy()) {
+            ArrayList<ArrayList<Coords>> tmpnavy = new ArrayList();
+            int navyi = 0;
+            //System.out.println("top"+lista.get(x).getn().size());
+            if (lista.get(x).getNavy().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getNavy(), 0, lista.get(x).getNavy().size() - 1);
+
+                while (navyi < lista.get(x).getNavy().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (navyi < lista.get(x).getNavy().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getNavy().size();
+                        while (Math.abs(lista.get(x).getNavy().get(navyi + 1).getX() - lista.get(x).getNavy().get(navyi).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getNavy().get(navyi).getR());
+                            cord.setG(lista.get(x).getNavy().get(navyi).getG());
+                            cord.setB(lista.get(x).getNavy().get(navyi).getB());
+                            cord.setX(lista.get(x).getNavy().get(navyi).getX());
+                            cord.setY(lista.get(x).getNavy().get(navyi).getY());
+                            tmpx.add(cord);
+                            if (navyi + 1 < lista.get(x).getNavy().size() - 2) {
+                                navyi++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmpnavy.add(tmpx);
+                        navyi++;
+
+                    } else {
+                        navyi++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                navyi = 0;
+                //System.out.println("top"+lista.get(x).getBlack().size());
+
+                for (ArrayList<Coords> types : tmpnavy) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmpnavy);
+            }
+//---------------------------------------------------------------------------------------------
+            ArrayList<ArrayList<Coords>> tmpblue = new ArrayList();
+            int bluei = 0;
+            //System.out.println("top"+lista.get(x).getBlue().size());
+            if (lista.get(x).getBlue().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getBlue(), 0, lista.get(x).getBlue().size() - 1);
+
+                while (bluei < lista.get(x).getBlue().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (bluei < lista.get(x).getBlue().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getBlue().size();
+                        while (Math.abs(lista.get(x).getBlue().get(bluei + 1).getX() - lista.get(x).getBlue().get(bluei).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getBlue().get(bluei).getR());
+                            cord.setG(lista.get(x).getBlue().get(bluei).getG());
+                            cord.setB(lista.get(x).getBlue().get(bluei).getB());
+                            cord.setX(lista.get(x).getBlue().get(bluei).getX());
+                            cord.setY(lista.get(x).getBlue().get(bluei).getY());
+                            tmpx.add(cord);
+                            if (bluei + 1 < lista.get(x).getBlue().size() - 2) {
+                                bluei++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmpblue.add(tmpx);
+                        bluei++;
+
+                    } else {
+                        bluei++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                bluei = 0;
+                //System.out.println("top"+lista.get(x).getBlue().size());
+
+                for (ArrayList<Coords> types : tmpblue) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmpblue);
+            }
+//---------------------------------------------------------------------------------------------
+            ArrayList<ArrayList<Coords>> tmpgreen = new ArrayList();
+            int greeni = 0;
+            //System.out.println("top"+lista.get(x).getGreen().size());
+            if (lista.get(x).getGreen().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getGreen(), 0, lista.get(x).getGreen().size() - 1);
+
+                while (greeni < lista.get(x).getGreen().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (greeni < lista.get(x).getGreen().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getGreen().size();
+                        while (Math.abs(lista.get(x).getGreen().get(greeni + 1).getX() - lista.get(x).getGreen().get(greeni).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getGreen().get(greeni).getR());
+                            cord.setG(lista.get(x).getGreen().get(greeni).getG());
+                            cord.setB(lista.get(x).getGreen().get(greeni).getB());
+                            cord.setX(lista.get(x).getGreen().get(greeni).getX());
+                            cord.setY(lista.get(x).getGreen().get(greeni).getY());
+                            tmpx.add(cord);
+                            if (greeni + 1 < lista.get(x).getGreen().size() - 2) {
+                                greeni++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmpgreen.add(tmpx);
+                        greeni++;
+
+                    } else {
+                        greeni++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                greeni = 0;
+                //System.out.println("top"+lista.get(x).getBlue().size());
+
+                for (ArrayList<Coords> types : tmpgreen) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmpgreen);
+            }
+
+//---------------------------------------------------------------------------------------------
+            ArrayList<ArrayList<Coords>> tmpteal = new ArrayList();
+            int teali = 0;
+            //System.out.println("top"+lista.get(x).getGreen().size());
+            if (lista.get(x).getTeal().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getTeal(), 0, lista.get(x).getTeal().size() - 1);
+
+                while (teali < lista.get(x).getTeal().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (teali < lista.get(x).getTeal().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getTeal().size();
+                        while (Math.abs(lista.get(x).getTeal().get(teali + 1).getX() - lista.get(x).getTeal().get(teali).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getTeal().get(teali).getR());
+                            cord.setG(lista.get(x).getTeal().get(teali).getG());
+                            cord.setB(lista.get(x).getTeal().get(teali).getB());
+                            cord.setX(lista.get(x).getTeal().get(teali).getX());
+                            cord.setY(lista.get(x).getTeal().get(teali).getY());
+                            tmpx.add(cord);
+                            if (teali + 1 < lista.get(x).getTeal().size() - 2) {
+                                teali++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmpteal.add(tmpx);
+                        teali++;
+
+                    } else {
+                        teali++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                teali = 0;
+                //System.out.println("top"+lista.get(x).getBlue().size());
+
+                for (ArrayList<Coords> types : tmpteal) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmpteal);
+            }
+
+//---------------------------------------------------------------------------------------------
+            ArrayList<ArrayList<Coords>> tmpdeepskyblue = new ArrayList();
+            int deepskybluei = 0;
+            //System.out.println("top"+lista.get(x).getGreen().size());
+            if (lista.get(x).getDeepskyblue().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getDeepskyblue(), 0, lista.get(x).getDeepskyblue().size() - 1);
+
+                while (deepskybluei < lista.get(x).getDeepskyblue().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (deepskybluei < lista.get(x).getDeepskyblue().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getDeepskyblue().size();
+                        while (Math.abs(lista.get(x).getDeepskyblue().get(deepskybluei + 1).getX() - lista.get(x).getDeepskyblue().get(deepskybluei).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getDeepskyblue().get(deepskybluei).getR());
+                            cord.setG(lista.get(x).getDeepskyblue().get(deepskybluei).getG());
+                            cord.setB(lista.get(x).getDeepskyblue().get(deepskybluei).getB());
+                            cord.setX(lista.get(x).getDeepskyblue().get(deepskybluei).getX());
+                            cord.setY(lista.get(x).getDeepskyblue().get(deepskybluei).getY());
+                            tmpx.add(cord);
+                            if (deepskybluei + 1 < lista.get(x).getDeepskyblue().size() - 2) {
+                                deepskybluei++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmpdeepskyblue.add(tmpx);
+                        deepskybluei++;
+
+                    } else {
+                        deepskybluei++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                deepskybluei = 0;
+                //System.out.println("top"+lista.get(x).getBlue().size());
+
+                for (ArrayList<Coords> types : tmpdeepskyblue) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmpdeepskyblue);
+            }
+
+//---------------------------------------------------------------------------------------------
+
+            ArrayList<ArrayList<Coords>> tmplime = new ArrayList();
+            int limei = 0;
+            //System.out.println("top"+lista.get(x).getGreen().size());
+            if (lista.get(x).getLime().size() > 0) {
+
+                Quicksort.quickSortx(lista.get(x).getLime(), 0, lista.get(x).getLime().size() - 1);
+
+                while (limei < lista.get(x).getLime().size()) {
+                    ArrayList<Coords> tmpx = new ArrayList();
+
+                    if (limei < lista.get(x).getLime().size() - 2) {
+                        boolean sale = false;
+                        int tamano = lista.get(x).getLime().size();
+                        while (Math.abs(lista.get(x).getLime().get(limei + 1).getX() - lista.get(x).getLime().get(limei).getX()) < 5 && sale == false) {
+                            // System.out.println("entra?");
+
+                            Coords cord = new Coords();
+                            cord.setR(lista.get(x).getLime().get(limei).getR());
+                            cord.setG(lista.get(x).getLime().get(limei).getG());
+                            cord.setB(lista.get(x).getLime().get(limei).getB());
+                            cord.setX(lista.get(x).getLime().get(limei).getX());
+                            cord.setY(lista.get(x).getLime().get(limei).getY());
+                            tmpx.add(cord);
+                            if (limei + 1 < lista.get(x).getLime().size() - 2) {
+                                limei++;
+                            } else {
+                                sale = true;
+                            }
+                        }
+
+                        tmplime.add(tmpx);
+                        limei++;
+
+                    } else {
+                        limei++;
+                    }
+
+                }
+
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                limei = 0;
+                //System.out.println("top"+lista.get(x).getBlue().size());
+
+                for (ArrayList<Coords> types : tmplime) {
+                    if (types.size() > 0) {
+                        int index;
+                        if ((types.size() / 2) % 2 == 0) {
+                            index = types.size() / 2;
+                        } else {
+                            index = (types.size() + 1) / 2;
+                        }
+                        Quicksort.quickSorty(types, index, types.size() - 1);
+                    }
+
+                }
+
+                tmpe.add(tmplime);
+            }
+
+
+//---------------------------------------------------------------------------------------------
+            for (Coords coord
+                    : lista.get(x)
+                    .getSpringgreen()) {
 
             }
 
 //---------------------------------------------------------------------------------------------
-            for (Coords cuadrante_color : lista.get(x).getBlue()) {
+            for (Coords coord
+                    : lista.get(x)
+                    .getCyan()) {
 
             }
 
 //---------------------------------------------------------------------------------------------
-            for (Coords cuadrante_color : lista.get(x).getGreen()) {
+            for (Coords coord
+                    : lista.get(x)
+                    .getDarkred()) {
 
             }
 
 //---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getTeal()) {
-
+        }
+        for (ArrayList<ArrayList<Coords>> tmpx : tmpe) {
+            System.out.println("oooooooooooooooCuadranteoooooooooooooooooooooooo");
+            for (ArrayList<Coords> aa : tmpx) {
+                System.out.println("-------tipo-----------------");
+                for (Coords cord : aa) {
+                    System.out.println(cord.getX() + " , " + cord.getY());
+                }
             }
-
-//---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getDeepskyblue()) {
-
-            }
-
-//---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getLime()) {
-
-            }
-
-//---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getSpringgreen()) {
-
-            }
-
-//---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getCyan()) {
-
-            }
-
-//---------------------------------------------------------------------------------------------
-            for (Coords coord : lista.get(x).getDarkred()) {
-
-            }
-
-//---------------------------------------------------------------------------------------------
-            chromo.add(cromo);
-
         }
 
-        //return chromo;
+//return chromo;
     }
 }
