@@ -17,14 +17,15 @@ public class Chromosome {
     int color;
     int cordenada;
     Binary binario = new Binary();*/
-    Binary binario = new Binary();
+    
     int R;
     int G;
     int B;
     int x1;
     int y1;
     int x2;
-    int y2;       
+    int y2; 
+    int cantidad;
     String cromosoma;
     private String cromocolor;
     private String cromocoord;
@@ -41,6 +42,7 @@ public class Chromosome {
 
     public void setR(int R) {
         this.R = R;
+        
     }
 
     public int getG() {
@@ -57,6 +59,8 @@ public class Chromosome {
 
     public void setB(int B) {
         this.B = B;
+        
+        setCromocolor(Binary.obtenerBinario(R), Binary.obtenerBinario(G), Binary.obtenerBinario(B));
     }
 
     public int getX1() {
@@ -81,6 +85,7 @@ public class Chromosome {
 
     public void setX2(int x2) {
         this.x2 = x2;
+        
     }
 
     public int getY2() {
@@ -89,13 +94,16 @@ public class Chromosome {
 
     public void setY2(int y2) {
         this.y2 = y2;
+        setCromocoord(Binary.obtenerBinario(x1),Binary.obtenerBinario(y1),Binary.obtenerBinario(x2),Binary.obtenerBinario(y2));
+        setCromosoma(cromocolor, cromocoord);
     }
 
-    public String getCromosoma() {
+    private String getCromosoma() {
         return cromosoma;
     }
 
-    public void setCromosoma(String cromosoma) {
+    private void setCromosoma(String cromocolor, String cromocoord) {
+        String cromosoma=cromocolor+cromocoord;
         this.cromosoma = cromosoma;
     }
 
@@ -103,7 +111,8 @@ public class Chromosome {
         return cromocolor;
     }
 
-    public void setCromocolor(String cromocolor) {
+    public void setCromocolor(String r, String g, String b) {
+        String cromocolor = r+b+g;
         this.cromocolor = cromocolor;
     }
 
@@ -111,8 +120,17 @@ public class Chromosome {
         return cromocoord;
     }
 
-    public void setCromocoord(String cromocoord) {
+    private void setCromocoord(String x1, String y1, String x2, String y2) {
+        String comocoord = x1+y1+x2+y2;
         this.cromocoord = cromocoord;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
     

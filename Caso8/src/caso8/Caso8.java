@@ -33,7 +33,7 @@ public class Caso8 {
             }
         }
         
-        BufferedImage image = ImageIO.read(Metadata.class.getResource("stick.jpg"));//imagen a tomar   Inkedverduras_LI
+        BufferedImage image = ImageIO.read(Metadata.class.getResource("guacamaya.jpg"));//imagen a tomar   Inkedverduras_LI
         BufferedImage imagen = new BufferedImage(1024,1024, TYPE_INT_RGB);
         ArrayList<ColorList> coords_a_ordenar  = new ArrayList();//coords de cada cuadrante
         
