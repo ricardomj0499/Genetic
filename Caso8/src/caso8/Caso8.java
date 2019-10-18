@@ -33,7 +33,7 @@ public class Caso8 {
             }
         }
         
-        BufferedImage image = ImageIO.read(Metadata.class.getResource("stick.jpg"));//imagen a tomar   Inkedverduras_LI
+        BufferedImage image = ImageIO.read(Metadata.class.getResource("guacamaya.jpg"));//imagen a tomar   Inkedverduras_LI
         BufferedImage imagen = new BufferedImage(1024,1024, TYPE_INT_RGB);
         ArrayList<ColorList> coords_a_ordenar  = new ArrayList();//coords de cada cuadrante
         
@@ -67,14 +67,9 @@ public class Caso8 {
         System.out.println("********************************************");
         ClassifyTarget clasi = new ClassifyTarget();
         clasi.classify(coords_a_ordenar);
-       /* for(int x=0;x<coords_a_ordenar.size();x++) {
-            for(Coords coord: coords_a_ordenar.get(x).getRed()){
-                    System.out.println("++++++++++++++++++++++");
-                    System.out.println(coord.getX());
-                }
-            System.out.println("\n");
+        
             
-            /*coords_a_ordenar.get(x).getBlue().;
+          /*  coords_a_ordenar.get(x).getBlue();
             coords_a_ordenar.get(x).getCyan();
             coords_a_ordenar.get(x).getGreen();
             coords_a_ordenar.get(x).getMagenta();
