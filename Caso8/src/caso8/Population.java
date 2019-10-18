@@ -20,7 +20,18 @@ public class Population {
         ArrayList<ArrayList<Chromosome>> poblaciones = new ArrayList();
 
         for (ArrayList<Chromosome> cuad : cromostarget) {
-            int tipo = 0;
+        
+
+            System.out.println("oooooooooooooooCuadranteoooooooooooooooooooooooo");
+          
+            for (Chromosome aa : cuad) {
+                 double por=aa.getCantidad()/total;
+                 double pp=aa.cantidad-1/total-1;
+                    System.out.println(por);
+            }
+
+        
+           /* int tipo = 0;
             cuadrante++;
             ArrayList<ArrayList<Double>> cant = new ArrayList();
             int begin = 0;
@@ -64,7 +75,7 @@ public class Population {
                 System.out.println(aa.getR() + "," + aa.getG() + "," + aa.getB());
                 System.out.println("x1,y1 = " + aa.getX1() + "," + aa.getY1());
                 System.out.println("x2,y2 = " + aa.getX2() + "," + aa.getY2());
-            }
+            }*/
         }
         
 
